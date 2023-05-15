@@ -1,18 +1,31 @@
-import React, { ButtonHTMLAttributes, FC } from "react";
+import React, { ButtonHTMLAttributes, FC, ReactNode, useEffect } from "react";
+import { initTE, Ripple } from "tw-elements";
 
 import { Loading } from "..";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
 }
 export const Button: FC<ButtonProps> = ({ ...props }) => {
-  const { isLoading = false, ...rest } = props;
+  const { isLoading = false, leftIcon, rightIcon, ...rest } = props;
+
+  useEffect(() => {
+    initTE({ Ripple });
+  }, []);
+
   return (
     <button
+      type="button"
       {...rest}
-      className={`bg-primary-blue/100 text-neutral p-1 m-1 flex items-center justify-center relative ${props.className}`}
+      data-te-ripple-init
+      data-te-ripple-color="light"
+      className={`bg-primary rounded shadow-md text-neutral text-sm p-2 m-1 h-9 flex items-center justify-center relative hover:opacity-80 ${props.className}`}
     >
+      {leftIcon && <span className="h-5 w-5 mr-1">{leftIcon}</span>}
       {props.children}
+      {rightIcon && <span className="h-5 w-5 ml-1">{rightIcon}</span>}
 
       {isLoading && (
         <Loading

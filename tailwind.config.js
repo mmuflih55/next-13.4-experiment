@@ -6,6 +6,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {
     fontSize: {
@@ -29,19 +30,19 @@ module.exports = {
         "neutral-gray/70": "#627688",
         "neutral-gray/90": "#33414D",
 
-        "primary-blue/20": "#CDDCFE",
-        "primary-blue/100": "#036FCD",
-
         "neutral/400": "#9C9EB0",
         "neutral/500": "#6B6D80",
         "neutral/900": "#111327",
 
+        primary: "#4567d6",
         "primary/40": "#E1E2EC",
         "primary/50": "#F9F9FB",
         "primary/200": "#ECEDF3",
         "primary/300": "##E6E7EF",
         "primary/400": "#E0E1EB",
         "primary/900": "#50537C",
+
+        secondary: "#40c77d",
       },
       borderColor: {
         neutral: "#FFFFFF",
@@ -52,12 +53,13 @@ module.exports = {
         "neutral-gray/70": "#627688",
         "neutral-gray/90": "#33414D",
 
-        "primary-blue/20": "#CDDCFE",
-        "primary-blue/100": "#036FCD",
-
         "neutral/400": "#9C9EB0",
         "neutral/500": "#6B6D80",
         "neutral/900": "#111327",
+
+        primary: "#4567d6",
+        "primary-blue/20": "#CDDCFE",
+        "primary-blue/100": "#036FCD",
 
         "primary/40": "#E1E2EC",
         "primary/50": "#F9F9FB",
@@ -65,6 +67,8 @@ module.exports = {
         "primary/300": "##E6E7EF",
         "primary/400": "#E0E1EB",
         "primary/900": "#50537C",
+
+        secondary: "#40c77d",
       },
     },
     fontFamily: {
@@ -73,5 +77,5 @@ module.exports = {
       newsreader: ["Newsreader", "serif"],
     },
   },
-  plugins: [],
+  plugins: [require("tw-elements/dist/plugin")],
 };

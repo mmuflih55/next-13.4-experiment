@@ -10,5 +10,6 @@ const OrderList = dynamic(
   }
 );
 
-const Dashboard = () => <OrderList />;
-export default Dashboard;
+export default function OrdersPage() {
+  return <OrderList />;
+}

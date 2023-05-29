@@ -79,7 +79,7 @@ const SideBar: FC = () => {
           <a
             href="/orders"
             className={`${
-              pathname === "/" || pathname === "orders"
+              pathname === "/" || pathname === "/orders"
                 ? "bg-primary text-neutral"
                 : ""
             } flex items-center h-13 w-13 cursor-pointer px-4 py-4 rounded-[5px] hover:bg-primary hover:text-neutral transition`}
@@ -95,7 +95,7 @@ const SideBar: FC = () => {
           <a
             href="/shipments"
             className={`${
-              pathname === "shipments" ? "bg-primary text-neutral" : ""
+              pathname === "/shipments" ? "bg-primary text-neutral" : ""
             } flex items-center h-13 w-13 cursor-pointer px-4 py-4 rounded-[5px] hover:bg-primary hover:text-neutral transition`}
             data-te-sidenav-link-ref
           >
@@ -109,7 +109,7 @@ const SideBar: FC = () => {
           <a
             href="/settings"
             className={`${
-              pathname === "settings" ? "bg-primary text-neutral" : ""
+              pathname === "/settings" ? "bg-primary text-neutral" : ""
             } flex items-center h-13 w-13 cursor-pointer px-4 py-4 rounded-[5px] hover:bg-primary hover:text-neutral transition`}
             data-te-sidenav-link-ref
           >

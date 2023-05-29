@@ -1,8 +1,10 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useMemo, useState } from "react";
 
 import { Datepicker, Input, Select } from "@/components/ui";
+import { Payment } from "@/interfaces/payment";
 import { Product } from "@/interfaces/product";
 
+import AddPaymentForm from "./AddPayment";
 import AddProductForm from "./AddProduct";
 
 const AddOrderForm: FC = () => {
@@ -15,7 +17,9 @@ const AddOrderForm: FC = () => {
       units: 0,
     },
   ]);
-  // const [payments, setPayments] = useState([]);
+  const [payments, setPayments] = useState<Payment[]>([
+    { payment_name: "", payment_date: "", amount_paid: 0 },
+  ]);
 
   const hanldeInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setOrder((order) => ({ ...order, [e.target.name]: e.target.value }));
@@ -32,8 +36,13 @@ const AddOrderForm: FC = () => {
       products,
       // payments
     };
-    console.log(payload);
   };
+
+  const totalAmount = useMemo(
+    () => products.reduce((acc, curr) => acc + curr.unit_cost * curr.units, 0),
+    [products]
+  );
+
   return (
     <>
       <form onSubmit={onFormSubmit}>
@@ -109,7 +118,16 @@ const AddOrderForm: FC = () => {
               />
             </div>
           </div>
-          <AddProductForm products={products} setProduct={setProducts} />
+          <AddProductForm
+            products={products}
+            setProduct={setProducts}
+            totalAmount={totalAmount}
+          />
+          <AddPaymentForm
+            payments={payments}
+            setPayment={setPayments}
+            totalAmount={totalAmount}
+          />
         </div>
 
         <div className="flex flex-shrink-0 flex-wrap items-center justify-between rounded-b-md p-4">

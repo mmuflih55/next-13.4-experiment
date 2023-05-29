@@ -14,13 +14,13 @@ import {
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   title?: string;
-  onChange: (e: any) => void;
+  onChange?: (e: any) => void;
 }
 export const Datepicker: FC<InputProps> = ({ label, title, ...props }) => {
   const inputRef = useRef(null);
   const hanldeInputChange = useCallback(
     (e: any) => {
-      props.onChange({ target: e?.target?.firstChild });
+      if (props.onChange) props.onChange({ target: e?.target?.firstChild });
     },
     [props]
   );
@@ -57,7 +57,7 @@ export const Datepicker: FC<InputProps> = ({ label, title, ...props }) => {
         {label && (
           <label
             htmlFor={props.id}
-            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
+            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral/500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
           >
             {label}
           </label>

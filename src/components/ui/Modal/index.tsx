@@ -29,6 +29,7 @@ export const Modal: FC<ModalProps> = ({
       className={`fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none ${
         className ?? ""
       }`}
+      id={id}
     >
       <div
         data-te-modal-dialog-ref
